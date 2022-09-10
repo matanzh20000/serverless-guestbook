@@ -1,13 +1,13 @@
 /**
  * Web application
  */
-const apiUrl = 'https://apikey-v2-261gwrkj9gkgudbtx972b0avi1blhqi952dgbl22enr4:d24f60513548eb0d7466280d9cf6ec98@a6e689ff-8e45-4769-848d-16488d65836e-bluemix.cloudantnosqldb.appdomain.cloud';
+const apiUrl = 'https://eu-de.functions.cloud.ibm.com/api/v1/namespaces/matanzh20000_SPACECAPS/actions/guestbook';
 const guestbook = {
   // retrieve the existing guestbook entries
   get() {
     return $.ajax({
       type: 'GET',
-      url: `${apiUrl}/entries`,
+      url: `${apiUrl}/entries/read-guestbook-entries-sequence.json`,
       dataType: 'json'
     });
   },
@@ -16,7 +16,7 @@ const guestbook = {
     console.log('Sending', name, email, comment)
     return $.ajax({
       type: 'PUT',
-      url: `${apiUrl}/entries`,
+      url: `${apiUrl}/entries/save-guestbook-entry-sequence.json`,
       contentType: 'application/json; charset=utf-8',
       data: JSON.stringify({
         name,
